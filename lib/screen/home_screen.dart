@@ -69,8 +69,8 @@ class _HomePageState extends State<HomePage> {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.arrow_upward, size: 30),
-                  Icon(Icons.arrow_downward, size: 30),
+                  Icon(Icons.swap_vert_rounded,
+                      size: 50, color: Color.fromARGB(255, 28, 31, 63)),
                 ],
               ),
               const SizedBox(height: 30.0),
@@ -89,9 +89,9 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       padding: const EdgeInsets.all(23.0),
                       child: const Text(
-                        'Translated Text',
+                        '...',
                         style: TextStyle(
-                          fontFamily: 'Dosis',
+                          fontFamily: 'Alata',
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                         style: const TextStyle(
                             fontFamily: 'Alata',
                             fontSize: 18.0,
-                            color: Colors.grey),
+                            color: Colors.white54),
                       ),
                     ),
                     const SizedBox(
@@ -118,12 +118,13 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                 onPressed: translateText,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 125, 147, 138),
+                  backgroundColor: Colors.red,
                   elevation: 4.0,
                 ),
                 child: const Text(
                   'Translate',
-                  style: TextStyle(fontSize: 18.0),
+                  style: TextStyle(
+                      fontSize: 13, color: Colors.white, fontFamily: 'Bungee'),
                 ),
               ),
             ],

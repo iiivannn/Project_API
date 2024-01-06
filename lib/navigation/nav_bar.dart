@@ -60,16 +60,16 @@ class _NavBarState extends State<NavBar> {
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
+                icon: Icon(Icons.swap_horizontal_circle),
+                label: 'TranslateEASE',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.menu_book),
-                label: 'Dictionary',
+                label: 'KanaKit',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),
-                label: 'Account',
+                icon: Icon(Icons.settings),
+                label: 'Settings',
               ),
             ],
           ),

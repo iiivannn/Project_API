@@ -42,7 +42,7 @@ class _LanguageDropdownRowState extends State<LanguageDropdownRow> {
               selectedLanguages[index] = newValue!;
               // Call the callback with selected languages
               widget.onLanguagesSelected(selectedLanguages
-                  .map((lang) => languageMap[lang] ?? "en")
+                  .map((lang) => languageMap[lang] ?? "tl")
                   .toList());
             });
           },
