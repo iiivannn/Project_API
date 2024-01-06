@@ -1,6 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:app_api/screen/home_screen.dart';
+import 'package:app_api/navigation/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -24,7 +24,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void navigateToHomePage() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) => const NavBar()),
     );
   }
 
@@ -42,4 +42,4 @@ class _LoadingScreenState extends State<LoadingScreen> {
 }
 
 
-//const Color.fromARGB(255, 125, 147, 138)
+//const Color.fromARGB(255, 125, 147, 138),
