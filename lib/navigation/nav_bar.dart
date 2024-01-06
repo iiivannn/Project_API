@@ -39,8 +39,8 @@ class _NavBarState extends State<NavBar> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'History',
+            icon: Icon(Icons.menu_book),
+            label: 'Dictionary',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),

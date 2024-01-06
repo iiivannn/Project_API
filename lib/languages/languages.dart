@@ -15,7 +15,7 @@ class LanguageDropdownRow extends StatefulWidget {
 class _LanguageDropdownRowState extends State<LanguageDropdownRow> {
   List<String> selectedLanguages = [
     'English',
-    'English'
+    'Tagalog'
   ]; // Initialize with default values
 
   Map<String, String> languageMap = {
