@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String txt = '';
   String? translatedText;
-  List<String> selectedLanguages = ['English', 'English']; // Default values
+  List<String> selectedLanguages = ['English', 'Tagalog']; // Default values
 
   void translateText() async {
     final transText =
@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white10,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -55,13 +56,13 @@ class _HomePageState extends State<HomePage> {
                       width: 2.0,
                     ),
                   ),
-                  labelStyle: TextStyle(fontSize: 20.0),
+                  labelStyle: TextStyle(fontFamily: 'Alata', fontSize: 20.0),
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 20.0,
                     vertical: 20.0,
                   ), // Set the desired padding
                 ),
-                style: const TextStyle(fontSize: 20.0),
+                style: const TextStyle(fontFamily: 'Alata', fontSize: 20.0),
                 maxLines: 3,
               ),
               const SizedBox(height: 30.0),
@@ -90,6 +91,7 @@ class _HomePageState extends State<HomePage> {
                       child: const Text(
                         'Translated Text',
                         style: TextStyle(
+                          fontFamily: 'Dosis',
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -100,8 +102,10 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         translatedText ??
                             'Your translated text will appear here.',
-                        style:
-                            const TextStyle(fontSize: 18.0, color: Colors.grey),
+                        style: const TextStyle(
+                            fontFamily: 'Alata',
+                            fontSize: 18.0,
+                            color: Colors.grey),
                       ),
                     ),
                     const SizedBox(
