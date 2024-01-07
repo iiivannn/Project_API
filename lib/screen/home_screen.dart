@@ -150,7 +150,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: const Text(
                         'Copy Text',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                          fontFamily: 'Alata',
+                          fontSize: 18.0,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     const SizedBox(

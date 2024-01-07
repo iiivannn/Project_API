@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:app_api/screen/kana.dart';
-import 'package:app_api/screen/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:app_api/screen/home_screen.dart';
 
@@ -76,7 +75,6 @@ class _NavBarState extends State<NavBar> {
             children: const <Widget>[
               HomePage(),
               KitKana(),
-              SettingScreen(),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -99,10 +97,6 @@ class _NavBarState extends State<NavBar> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.menu_book),
                 label: 'KanaKit',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.fact_check_rounded),
-                label: 'Info',
               ),
             ],
           ),
