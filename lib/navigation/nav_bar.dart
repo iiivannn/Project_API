@@ -15,7 +15,7 @@ class _NavBarState extends State<NavBar> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const KanaKitScreen(),
+    KitKana(),
     SettingScreen(),
   ];
 
@@ -26,6 +26,7 @@ class _NavBarState extends State<NavBar> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('image/Wallpaper_4.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Scaffold(

@@ -155,30 +155,78 @@ class KitKana extends StatefulWidget {
 
 class _KitKanaState extends State<KitKana> {
   final KanaKit kanaKit = const KanaKit();
+  final TextEditingController _textController = TextEditingController();
+  String _result = '';
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Scaffold with KanaKit'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Hiragana: ${kanaKit.toHiragana('Hello')}',
-              style: TextStyle(fontSize: 20),
+    return MaterialApp(
+      home: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('image/Wallpaper_5.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.white10,
+          appBar: AppBar(
+            centerTitle: true,
+            title: const Text(
+              'kanaKIT',
+              style: TextStyle(
+                fontFamily: 'OverlockSC',
+                color: Colors.deepOrange,
+                fontSize: 45,
+              ),
             ),
-            Text(
-              'Katakana: ${kanaKit.toKatakana('Hello')}',
-              style: TextStyle(fontSize: 20),
+          ),
+
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: _textController,
+                  decoration: const InputDecoration(labelText: 'Enter text'),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _result = kanaKit.toRomaji(_textController.text);
+                    });
+                  },
+                  child: const Text(
+                    'Convert to Romaji',
+                    style: TextStyle(fontFamily: 'OverlockSC', fontSize: 15),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  _result,
+                  style: const TextStyle(
+                      fontSize: 30,
+                      fontFamily: 'OverlockSC',
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
-            Text(
-              'Romaji: ${kanaKit.toRomaji('こんにちは')}',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
+          ),
+
+          //Center(
+          //child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          //children: [
+          //Text(
+          //'Romaji: ${kanaKit.toRomaji('こんにちは')}',
+          //style:
+          //const TextStyle(fontSize: 35, fontFamily: 'OverlockSC'),
+          //),
+          //],
+          //),
+          //),
         ),
       ),
     );
@@ -203,6 +251,7 @@ class _SettingScreen extends State<SettingScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('image/Wallpaper_4.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Scaffold(
