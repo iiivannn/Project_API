@@ -33,27 +33,80 @@ class _LanguageDropdownRowState extends State<LanguageDropdownRow> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: List.generate(
-        2,
-        (index) => DropdownButton<String>(
-          value: selectedLanguages[index],
-          onChanged: (newValue) {
-            setState(() {
-              selectedLanguages[index] = newValue!;
-              // Call the callback with selected languages
-              widget.onLanguagesSelected(selectedLanguages
-                  .map((lang) => languageMap[lang] ?? "en")
-                  .toList());
-            });
-          },
-          items: languageMap.keys.map((language) {
-            return DropdownMenuItem(
-              value: language,
-              child: Text(language),
-            );
-          }).toList(),
+      children: [
+        Container(
+          padding: const EdgeInsets.only(right: 6),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: Colors.blueGrey[200],
+          ),
+          child: Row(
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  'From',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                ),
+              ),
+              DropdownButton<String>(
+                value: selectedLanguages[0],
+                onChanged: (newValue) {
+                  setState(() {
+                    selectedLanguages[0] = newValue!;
+                    // Call the callback with selected languages
+                    widget.onLanguagesSelected(selectedLanguages
+                        .map((lang) => languageMap[lang] ?? "tl")
+                        .toList());
+                  });
+                },
+                items: languageMap.keys.map((language) {
+                  return DropdownMenuItem(
+                    value: language,
+                    child: Text(language),
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
         ),
-      ),
+        Container(
+          padding: const EdgeInsets.only(right: 12.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: Colors.blueGrey[200],
+          ),
+          child: Row(
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  'To',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                ),
+              ),
+              DropdownButton<String>(
+                value: selectedLanguages[1],
+                onChanged: (newValue) {
+                  setState(() {
+                    selectedLanguages[1] = newValue!;
+                    // Call the callback with selected languages
+                    widget.onLanguagesSelected(selectedLanguages
+                        .map((lang) => languageMap[lang] ?? "tl")
+                        .toList());
+                  });
+                },
+                items: languageMap.keys.map((language) {
+                  return DropdownMenuItem(
+                    value: language,
+                    child: Text(language),
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
