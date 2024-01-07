@@ -1,8 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, must_be_immutable
 
 import 'package:app_api/languages/languages.dart';
 import 'package:app_api/translation/translation_api.dart';
 import 'package:flutter/material.dart';
+import 'package:card_swiper/card_swiper.dart';
+import 'package:kana_kit/kana_kit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String txt = '';
   String? translatedText;
-  List<String> selectedLanguages = ['English', 'English']; // Default values
+  List<String> selectedLanguages = ['English', 'Tagalog']; // Default values
 
   void translateText() async {
     final transText =
@@ -27,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white10,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -55,21 +58,21 @@ class _HomePageState extends State<HomePage> {
                       width: 2.0,
                     ),
                   ),
-                  labelStyle: TextStyle(fontSize: 20.0),
+                  labelStyle: TextStyle(fontFamily: 'Alata', fontSize: 20.0),
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 20.0,
                     vertical: 20.0,
                   ), // Set the desired padding
                 ),
-                style: const TextStyle(fontSize: 20.0),
+                style: const TextStyle(fontFamily: 'Alata', fontSize: 20.0),
                 maxLines: 3,
               ),
               const SizedBox(height: 30.0),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.arrow_upward, size: 30),
-                  Icon(Icons.arrow_downward, size: 30),
+                  Icon(Icons.swap_vert_rounded,
+                      size: 50, color: Color.fromARGB(255, 28, 31, 63)),
                 ],
               ),
               const SizedBox(height: 30.0),
@@ -88,8 +91,9 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       padding: const EdgeInsets.all(23.0),
                       child: const Text(
-                        'Translated Text',
+                        '...',
                         style: TextStyle(
+                          fontFamily: 'Alata',
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -100,8 +104,10 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         translatedText ??
                             'Your translated text will appear here.',
-                        style:
-                            const TextStyle(fontSize: 18.0, color: Colors.grey),
+                        style: const TextStyle(
+                            fontFamily: 'Alata',
+                            fontSize: 18.0,
+                            color: Colors.white54),
                       ),
                     ),
                     const SizedBox(
@@ -114,12 +120,13 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                 onPressed: translateText,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 125, 147, 138),
+                  backgroundColor: Colors.red,
                   elevation: 4.0,
                 ),
                 child: const Text(
                   'Translate',
-                  style: TextStyle(fontSize: 18.0),
+                  style: TextStyle(
+                      fontSize: 13, color: Colors.white, fontFamily: 'Bungee'),
                 ),
               ),
             ],
@@ -130,27 +137,154 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({Key? key}) : super(key: key);
+class KanaKitScreen extends StatelessWidget {
+  const KanaKitScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('History Screen or baka Dictionary whateva',
-          style: TextStyle(fontSize: 20)),
+      child: Text('Dito yung KanaKit', style: TextStyle(fontSize: 20)),
+    );
+  }
+}
+
+class KitKana extends StatefulWidget {
+  @override
+  _KitKanaState createState() => _KitKanaState();
+}
+
+class _KitKanaState extends State<KitKana> {
+  final KanaKit kanaKit = const KanaKit();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Scaffold with KanaKit'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Hiragana: ${kanaKit.toHiragana('Hello')}',
+              style: TextStyle(fontSize: 20),
+            ),
+            Text(
+              'Katakana: ${kanaKit.toKatakana('Hello')}',
+              style: TextStyle(fontSize: 20),
+            ),
+            Text(
+              'Romaji: ${kanaKit.toRomaji('こんにちは')}',
+              style: TextStyle(fontSize: 20),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SettingScreen extends StatefulWidget {
+  @override
+  _SettingScreen createState() => _SettingScreen();
+}
+
+class _SettingScreen extends State<SettingScreen> {
+  List<String> imagePaths = [
+    'image/Pacute.jpg',
+    'image/Yasmin.jpg',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('image/Wallpaper_4.jpg'),
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.white10,
+          appBar: AppBar(
+            centerTitle: true,
+            flexibleSpace: Container(
+                decoration: const BoxDecoration(
+              color: Colors.red,
+            )),
+            title: const Text(
+              'Support the Developers by:',
+              style: TextStyle(
+                  fontFamily: 'Alata',
+                  color: Color.fromARGB(255, 28, 31, 63),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 19),
+            ),
+          ),
+          body: Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return AccountScreen(imagePath: imagePaths[index]);
+            },
+            itemCount: 2,
+            layout: SwiperLayout.STACK,
+            itemWidth: MediaQuery.of(context).size.width * 0.8,
+            itemHeight: MediaQuery.of(context).size.height * 0.7,
+            pagination: const SwiperPagination(),
+            control: const SwiperControl(),
+          ),
+        ),
+      ),
     );
   }
 }
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({Key? key}) : super(key: key);
+  final String imagePath;
+  const AccountScreen({Key? key, required this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Account Screen and/or Premium Promotion lol',
-        style: TextStyle(fontSize: 20),
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: const Color.fromARGB(255, 28, 31, 63),
+                  radius: 120,
+                  child: CircleAvatar(
+                      backgroundColor: Colors.red,
+                      radius: 115,
+                      child: Image.asset(
+                        imagePath,
+                      )),
+                ),
+                const Text(
+                  'BASIC',
+                  style: TextStyle(
+                    fontSize: 35.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                print('Button pressed!');
+              },
+              child: const Text('Press me'),
+            ),
+          ),
+        ],
       ),
     );
   }

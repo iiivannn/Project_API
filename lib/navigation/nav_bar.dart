@@ -15,38 +15,65 @@ class _NavBarState extends State<NavBar> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const HistoryScreen(),
-    const AccountScreen(),
+    const KanaKitScreen(),
+    SettingScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('TranslateEase API'),
-      ),
-      body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+    return MaterialApp(
+      home: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('image/Wallpaper_4.jpg'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book),
-            label: 'Dictionary',
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.white10,
+          appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.red, size: 35),
+            leading: const Icon(Icons.swap_horizontal_circle),
+            centerTitle: true,
+            flexibleSpace: Container(
+                decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 28, 31, 63),
+            )),
+            title: const Text(
+              'TranslateEASE',
+              style: TextStyle(
+                  fontFamily: 'Gruppo',
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30),
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
+          body: _pages[_currentIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: const Color.fromARGB(255, 28, 31, 63),
+            currentIndex: _currentIndex,
+            selectedItemColor: Colors.red,
+            unselectedItemColor: Colors.white,
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book),
+                label: 'KanaKit',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Settings',
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
