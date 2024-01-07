@@ -37,6 +37,7 @@ flutter:
     - image/Wallpaper_2.jpg
     - image/Wallpaper_3.gif
     - image/Wallpaper_4.jpg
+    - image/Wallpaper_5.jpg
     - image/Yasmin.jpg
     - image/Pacute.jpg
   
@@ -59,6 +60,9 @@ flutter:
     - family: RubikMonoOne
       fonts:
         - asset: fonts/RubikMonoOne-Regular.ttf
+    - family: OverlockSC
+      fonts:
+        - asset: fonts/OverlockSC-Regular.ttf
     
 
 
