@@ -3,6 +3,7 @@
 import 'package:app_api/languages/languages.dart';
 import 'package:app_api/translation/translation_api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,6 +23,17 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       translatedText = transText;
     });
+  }
+
+  void copyTranslatedText() {
+    if (translatedText != null) {
+      Clipboard.setData(ClipboardData(text: translatedText!));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Translated text copied to clipboard'),
+        ),
+      );
+    }
   }
 
   @override
@@ -67,21 +79,36 @@ class _HomePageState extends State<HomePage> {
                 style: const TextStyle(fontFamily: 'Alata', fontSize: 20.0),
                 maxLines: 3,
               ),
-              const SizedBox(height: 30.0),
-              const Row(
+              const SizedBox(height: 20.0),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.swap_vert_rounded,
-                      size: 50, color: Color.fromARGB(255, 28, 31, 63)),
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blueGrey[100],
+                    ),
+                    child: Center(
+                      child: IconButton(
+                        icon: const Icon(Icons.swap_vert_rounded,
+                            size: 30, color: Colors.black),
+                        onPressed: () {
+                          translateText();
+                        },
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 20.0),
               Container(
                 width: 600,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: const Color.fromARGB(255, 70, 90, 99),
-                    width: 2.0,
+                    width: 3.0,
                   ),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
@@ -105,18 +132,30 @@ class _HomePageState extends State<HomePage> {
                         translatedText ??
                             'Your translated text will appear here.',
                         style: const TextStyle(
-                            fontFamily: 'Alata',
-                            fontSize: 18.0,
-                            color: Colors.white54),
+                          fontFamily: 'Alata',
+                          fontSize: 18.0,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                     const SizedBox(
-                      height: 30,
-                    )
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: copyTranslatedText,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueGrey,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text('Copy Text'),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
               ),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: translateText,
                 style: ElevatedButton.styleFrom(
