@@ -18,6 +18,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_spinkit: ^5.2.0
   http: ^1.1.0
+  card_swiper: ^3.0.1
+  kana_kit: ^2.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +37,8 @@ flutter:
     - image/Wallpaper_2.jpg
     - image/Wallpaper_3.gif
     - image/Wallpaper_4.jpg
+    - image/Yasmin.jpg
+    - image/Pacute.jpg
   
   fonts: 
     - family: Alata

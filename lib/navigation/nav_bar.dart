@@ -15,8 +15,8 @@ class _NavBarState extends State<NavBar> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const HistoryScreen(),
-    const AccountScreen(),
+    const KanaKitScreen(),
+    SettingScreen(),
   ];
 
   @override
@@ -60,8 +60,8 @@ class _NavBarState extends State<NavBar> {
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.swap_horizontal_circle),
-                label: 'TranslateEASE',
+                icon: Icon(Icons.home),
+                label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.menu_book),
