@@ -85,6 +85,10 @@ class _KitKanaState extends State<KitKana> {
                             ),
                             const SizedBox(height: 20),
                             ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.deepOrange,
+                                foregroundColor: Colors.white,
+                              ),
                               onPressed: () {
                                 setState(() {
                                   _result =
@@ -94,9 +98,9 @@ class _KitKanaState extends State<KitKana> {
                               child: const Text(
                                 'Convert to Romaji',
                                 style: TextStyle(
-                                  fontFamily: 'OverlockSC',
-                                  fontSize: 15,
-                                ),
+                                    fontFamily: 'OverlockSC',
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w900),
                               ),
                             ),
                             const SizedBox(height: 20),

@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                 width: 600,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: const Color.fromARGB(255, 70, 90, 99),
+                    color: const Color.fromARGB(255, 145, 116, 116),
                     width: 3.0,
                   ),
                   borderRadius: BorderRadius.circular(20.0),
@@ -144,10 +144,14 @@ class _HomePageState extends State<HomePage> {
                     ElevatedButton(
                       onPressed: copyTranslatedText,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueGrey,
+                        backgroundColor:
+                            const Color.fromARGB(255, 145, 116, 116),
                         foregroundColor: Colors.white,
                       ),
-                      child: const Text('Copy Text'),
+                      child: const Text(
+                        'Copy Text',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
                     const SizedBox(
                       height: 10,

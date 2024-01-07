@@ -37,67 +37,75 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          iconTheme: const IconThemeData(color: Colors.red, size: 35),
-          centerTitle: false, // CenterTitle set to false
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 28, 31, 63),
+      home: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage('image/Wallpaper_4.jpg'),
+          fit: BoxFit.cover,
+        )),
+        child: Scaffold(
+          backgroundColor: Colors.white10,
+          appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.red, size: 35),
+            centerTitle: false, // CenterTitle set to false
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 28, 31, 63),
+              ),
+            ),
+            title: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.swap_horizontal_circle),
+                SizedBox(width: 8), // Adjust the spacing as needed
+                Text(
+                  'TranslateEASE',
+                  style: TextStyle(
+                    fontFamily: 'Gruppo',
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+              ],
             ),
           ),
-          title: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.swap_horizontal_circle),
-              SizedBox(width: 8), // Adjust the spacing as needed
-              Text(
-                'TranslateEASE',
-                style: TextStyle(
-                  fontFamily: 'Gruppo',
-                  color: Colors.red,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
+          body: PageView(
+            controller: _pageController,
+            onPageChanged: _onPageChanged,
+            children: const <Widget>[
+              HomePage(),
+              KitKana(),
+              SettingScreen(),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: const Color.fromARGB(255, 28, 31, 63),
+            currentIndex: _currentIndex,
+            selectedItemColor: Colors.red,
+            unselectedItemColor: Colors.white,
+            onTap: (index) {
+              _pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book),
+                label: 'KanaKit',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Settings',
               ),
             ],
           ),
-        ),
-        body: PageView(
-          controller: _pageController,
-          onPageChanged: _onPageChanged,
-          children: const <Widget>[
-            HomePage(),
-            KitKana(),
-            SettingScreen(),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: const Color.fromARGB(255, 28, 31, 63),
-          currentIndex: _currentIndex,
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Colors.white,
-          onTap: (index) {
-            _pageController.animateToPage(
-              index,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book),
-              label: 'KanaKit',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
-            ),
-          ],
         ),
       ),
     );
