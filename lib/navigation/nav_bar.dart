@@ -101,8 +101,8 @@ class _NavBarState extends State<NavBar> {
                 label: 'KanaKit',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'Settings',
+                icon: Icon(Icons.fact_check_rounded),
+                label: 'Info',
               ),
             ],
           ),
