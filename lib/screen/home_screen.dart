@@ -15,7 +15,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String txt = '';
   String? translatedText;
-  List<String> selectedLanguages = ['English', 'Tagalog']; // Default values
+  List<String> selectedLanguages = [
+    'English',
+    'Tagalog'
+  ]; // Dropdown default languages
 
   void translateText() async {
     final transText =
@@ -52,8 +55,8 @@ class _HomePageState extends State<HomePage> {
                     selectedLanguages = languages;
                   });
                 },
-              ), // Add the LanguageDropdownRow widget here
-              const SizedBox(height: 20.0), // Add some spacing
+              ),
+              const SizedBox(height: 20.0),
               TextField(
                 onChanged: (value) {
                   setState(() {

@@ -14,13 +14,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    // Call a function after 5 seconds
     Future.delayed(const Duration(milliseconds: 3500), () {
       navigateToHomePage();
     });
   }
 
-  // Function to navigate to the home page
+  // Navigates to NavBar
   void navigateToHomePage() {
     Navigator.pushReplacement(
       context,

@@ -13,10 +13,7 @@ class LanguageDropdownRow extends StatefulWidget {
 }
 
 class _LanguageDropdownRowState extends State<LanguageDropdownRow> {
-  List<String> selectedLanguages = [
-    'English',
-    'Tagalog'
-  ]; // Initialize with default values
+  List<String> selectedLanguages = ['English', 'Tagalog'];
 
   Map<String, String> languageMap = {
     'English': 'en',
@@ -54,7 +51,6 @@ class _LanguageDropdownRowState extends State<LanguageDropdownRow> {
                 onChanged: (newValue) {
                   setState(() {
                     selectedLanguages[0] = newValue!;
-                    // Call the callback with selected languages
                     widget.onLanguagesSelected(selectedLanguages
                         .map((lang) => languageMap[lang] ?? "tl")
                         .toList());
@@ -90,7 +86,6 @@ class _LanguageDropdownRowState extends State<LanguageDropdownRow> {
                 onChanged: (newValue) {
                   setState(() {
                     selectedLanguages[1] = newValue!;
-                    // Call the callback with selected languages
                     widget.onLanguagesSelected(selectedLanguages
                         .map((lang) => languageMap[lang] ?? "tl")
                         .toList());

@@ -46,7 +46,7 @@ class _NavBarState extends State<NavBar> {
           backgroundColor: Colors.white10,
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.red, size: 35),
-            centerTitle: false, // CenterTitle set to false
+            centerTitle: false,
             flexibleSpace: Container(
               decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 28, 31, 63),
@@ -56,7 +56,7 @@ class _NavBarState extends State<NavBar> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.swap_horizontal_circle),
-                SizedBox(width: 8), // Adjust the spacing as needed
+                SizedBox(width: 8),
                 Text(
                   'TranslateEASE',
                   style: TextStyle(
@@ -73,8 +73,8 @@ class _NavBarState extends State<NavBar> {
             controller: _pageController,
             onPageChanged: _onPageChanged,
             children: const <Widget>[
-              HomePage(),
-              KitKana(),
+              HomePage(), //calls the home tab
+              KitKana(), //calls the kanaKit tab
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
